@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1 class="currency-converter__title">Currency Converter</h1>
@@ -15,6 +16,7 @@
           <label class="currency-converter__label-oamount" for="oamount">Amount to Convert:</label>
           <input type="text" class="currency-converter__input-oamount" placeholder="0.00" id="oamount">
         </div>
+
         <div class="row">
           <div class="currency-converter__input-group">
             <div class="currency-converter__input-group-prepend">
@@ -25,6 +27,7 @@
               <option value="USD">USD</option>
             </select>
           </div>
+
           <div class="currency-converter__input-group">
             <div class="currency-converter__input-group-prepend">
               <span class="currency-converter__input-group-text">To</span>
@@ -35,14 +38,18 @@
             </select>
           </div>
         </div>
+
         <div class="currency-converter__btn-group">
           <button class="currency-converter__btn" type="submit">Convert</button>
           <button class="currency-converter__btn">Reset</button>
         </div>
+
         <div class="currency-converter__final-amount-text-box">
           <h2>Converted Amount:<span class="currency-converter__final-amount-value"></span></h2>
         </div>
       </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
