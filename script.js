@@ -4,26 +4,26 @@ const inputToCurrency = document.querySelector('.currency-converter__input-to');
 const btnConvert = document.querySelector('.currency-converter__btn--convert');
 const btnReset = document.querySelector('.currency-converter__btn--reset');
 const finalAmount = document.querySelector('.currency-converter__final-amount');
-let fromValue, toValue, inputValue;
+let fromCurrencyValue, toCurrencyValue, inputAmountValue;
 
 const api = "https://api.exchangerate-api.com/v4/latest/USD";
 
 inputFromCurrency.addEventListener('change', function(e) {
-    fromValue = `${e.target.value}`;
+    fromCurrencyValue = `${e.target.value}`;
 });
 
 inputToCurrency.addEventListener('change', function(e) {
-    toValue = `${e.target.value}`;
+    toCurrencyValue = `${e.target.value}`;
 });
 
 inputAmount.addEventListener('input', function(e) {
-    inputValue = `${e.target.value}`;
+    inputAmountValue = `${e.target.value}`;
 });
 
 btnConvert.addEventListener('click', function(e) {
-    console.log(fromValue);
-    console.log(toValue);
-    console.log(inputValue);
+    console.log(fromCurrencyValue);
+    console.log(toCurrencyValue);
+    console.log(inputAmountValue);
     fetch(`${api}`)
         .then(currency => {
             console.log(currency);
@@ -33,8 +33,15 @@ btnConvert.addEventListener('click', function(e) {
 });
 
 function displayResults(currency) {
-    let fromRate = currency.rates[inputFromCurrency];
-    let toRate = currency.rates[inputToCurrency];
-    finalAmount.innerHTML = ((toRate / fromRate) * inputValue).toFixed(2);
+    let fromCurrencyRate = currency.rates[fromCurrencyValue];
+    console.log(fromCurrencyRate);
+    let toCurrencyRate = currency.rates[toCurrencyValue];
+    console.log(toCurrencyRate);
+    finalAmount.innerHTML = ((toCurrencyRate / fromCurrencyRate) * inputAmountValue).toFixed(2);
     finalAmount.style.display = 'block';
+}
+
+function clearValue() {
+    window.location.reload();
+    document.getElementsByClassName('currency-converter__final-amount').innerHTML = "";
 }
